@@ -6,6 +6,8 @@ buildscript {
     }
 
     dependencies {
+        
+        classpath 'com.google.gms:google-services:4.3.5' // new
         classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -29,3 +31,16 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+defaultConfig {
+    applicationId "com.example.gtk_flutter"
+    minSdkVersion 21 // Updated
+    targetSdkVersion 30
+    versionCode flutterVersionCode.toInteger()
+    versionName flutterVersionName
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services' // new
