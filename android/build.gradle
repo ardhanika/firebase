@@ -3,12 +3,12 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url 'https://maven.google.com' }
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.0'
-        classpath 'com.google.gms:google-services:4.3.5' // new
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.5' // new
     }
 }
 
@@ -16,7 +16,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
     }
 }
 
@@ -28,25 +27,6 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
-// task clean(type: Delete) {
-//     delete rootProject.buildDir
-// }
-
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-apply plugin: 'com.google.gms.google-services' // new
-
-android{
-    compileSdkVersion 30
-    buildToolsVersion "26.0.3"
-
-    defaultConfig {
-        applicationId "com.example.firebase"
-        minSdkVersion 21 // Updated
-        targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-    }
-    
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
